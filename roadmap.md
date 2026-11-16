@@ -16,3 +16,4 @@ Yayınlama istendi. QR kodu yayın için belirlenen misafir menüsü adresini ku
 - [x] Çark ayarları Yönetim panelinde (Çark sekmesi); misafir çarkında ayar düğmesi yok
 - [x] Menüde çark düğmesi solda küçük, sade bir simge
 - [x] Yorum yaz düğmesi menünün üstünde görünür; yorum formunda isim alanı yok
+- [x] Telefondaki çark simgesi belirgin ve dokunulabilir; yorum düğmesi alt kenarda sabit

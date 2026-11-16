@@ -28,7 +28,7 @@ export function CommentBox() {
   }
 
   return <>
-    <section className="mt-4">
+    <section aria-label="Yorum" className="fixed bottom-0 left-1/2 z-30 w-full max-w-lg -translate-x-1/2 border-t border-border bg-background px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))]">
       <Button type="button" onClick={() => { setSent(false); setOpen(true); }} className="h-11 w-full">
         <MessageSquareText className="size-4" />Yorum yaz
       </Button>
