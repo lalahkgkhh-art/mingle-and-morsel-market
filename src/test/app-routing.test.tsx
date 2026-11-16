@@ -14,4 +14,12 @@ describe("App routing", () => {
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
+
+  it("opens management outside any authentication gate", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    const matches = router.matchRoutes("/dashboard");
+
+    expect(matches.at(-1)?.routeId).toBe("/dashboard");
+    expect(matches.some((match) => match.routeId.includes("_authenticated"))).toBe(false);
+  });
 });

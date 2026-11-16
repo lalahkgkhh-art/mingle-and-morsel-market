@@ -1,0 +1,58 @@
+[
+ {
+  "capability": "code",
+  "source": "GitHub mingle-menu-market (guest menu /, /dashboard, /auth, Şans Çarkı, photo route)",
+  "outcome": "copy",
+  "status": "verified",
+  "next_action": "none"
+ },
+ {
+  "capability": "schema",
+  "source": "menu_categories, menu_items, menu_reviews, guest_comments + storage policies",
+  "outcome": "migrate",
+  "status": "verified",
+  "next_action": "none"
+ },
+ {
+  "capability": "records",
+  "source": "Default menu seeded in migration; live edits/comments in old database not exported",
+  "outcome": "migrate",
+  "status": "pending",
+  "next_action": "Ask user for CSV exports or skip"
+ },
+ {
+  "capability": "auth",
+  "source": "None (passwordless dashboard)",
+  "outcome": "not needed",
+  "status": "accepted",
+  "next_action": "none"
+ },
+ {
+  "capability": "authorization",
+  "source": "Public RLS on menu tables (owner-requested)",
+  "outcome": "migrate",
+  "status": "verified",
+  "next_action": "none"
+ },
+ {
+  "capability": "file storage",
+  "source": "Private menu-photos bucket",
+  "outcome": "migrate",
+  "status": "partial",
+  "next_action": "Bucket and policies ready; old uploaded photos must be re-uploaded or exported"
+ },
+ {
+  "capability": "QR cutover",
+  "source": "publishedMenuUrl points to mingle-at-the-table.lovable.app",
+  "outcome": "cutover",
+  "status": "pending",
+  "next_action": "Update after this project is published"
+ },
+ {
+  "capability": "verification",
+  "source": "-",
+  "outcome": "verify",
+  "status": "verified",
+  "next_action": "none"
+ }
+]
