@@ -114,7 +114,7 @@ function Dashboard() {
           <div className="flex size-10 items-center justify-center rounded-xl bg-primary/15 text-primary"><Coffee className="size-5" /></div>
           <div><p className="font-semibold leading-tight">Kahve Menüsü</p><p className="text-xs text-muted-foreground">Yönetim paneli</p></div>
         </div>
-        <Button variant="outline" size="sm" asChild><Link to="/"><Eye />Menüyü gör</Link></Button>
+        <Button variant="outline" size="sm" asChild><Link to="/menu"><Eye />Menüyü gör</Link></Button>
       </div>
       <nav className="mx-auto grid max-w-5xl grid-cols-5 gap-1 px-4 pb-3" aria-label="Panel bölümleri">
         {tabs.map((t) => <button key={t.id} type="button" onClick={() => setTab(t.id)} aria-current={tab === t.id ? "page" : undefined}

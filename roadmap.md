@@ -17,3 +17,5 @@ Yayınlama istendi. QR kodu yayın için belirlenen misafir menüsü adresini ku
 - [x] Menüde çark düğmesi solda küçük, sade bir simge
 - [x] Yorum yaz düğmesi menünün üstünde görünür; yorum formunda isim alanı yok
 - [x] Telefondaki çark simgesi belirgin ve dokunulabilir; yorum düğmesi alt kenarda sabit
+- [x] Yorum düğmesi sağ altta küçük yuvarlak simge
+- [x] Uygulama yönetim paneliyle açılır; misafir menüsü QR kodla açılan ayrı sayfada

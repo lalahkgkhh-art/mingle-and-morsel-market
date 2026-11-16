@@ -76,8 +76,8 @@ describe("Passwordless menu access", () => {
     expect(result.items.map((item) => item.id)).toEqual(["visible"]);
   });
 
-  it("targets the public menu root rather than management or sign-in", () => {
-    expect(guestMenuUrl("https://coffee.example.com/dashboard")).toBe("https://coffee.example.com/");
+  it("targets the public menu page rather than management or sign-in", () => {
+    expect(guestMenuUrl("https://coffee.example.com/dashboard")).toBe("https://coffee.example.com/menu");
   });
 
   it("does not give guests an editor preview QR that might require sign-in", () => {
