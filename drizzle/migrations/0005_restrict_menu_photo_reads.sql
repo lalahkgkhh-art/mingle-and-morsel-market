@@ -1,0 +1,1 @@
+DROP POLICY IF EXISTS "Menu photos are readable" ON storage.objects;
