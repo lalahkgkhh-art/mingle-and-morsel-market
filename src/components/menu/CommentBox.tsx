@@ -5,6 +5,7 @@ import { CheckCircle2, MessageSquareText, Send, X } from "lucide-react";
 import { toast } from "sonner";
 import { sendComment } from "@/lib/menu.functions";
 import { commentSchema } from "@/lib/menu-schema";
+import { Button } from "@/components/ui/button";
 
 const field = "w-full rounded-2xl bg-input px-4 py-3 text-base outline-none placeholder:text-muted-foreground focus:ring-1 focus:ring-ring";
 
@@ -18,7 +19,7 @@ export function CommentBox() {
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const values = new FormData(e.currentTarget);
-    const parsed = commentSchema.safeParse({ author_name: values.get("author_name") ?? "", message: values.get("message") ?? "" });
+    const parsed = commentSchema.safeParse({ author_name: "", message: values.get("message") ?? "" });
     if (!parsed.success) { toast.error(parsed.error.issues[0]?.message ?? "Lütfen yorumunuzu yazın."); return; }
     setBusy(true);
     try { await send({ data: parsed.data }); setSent(true); }
@@ -27,13 +28,10 @@ export function CommentBox() {
   }
 
   return <>
-    <section className="mt-10 rounded-3xl bg-card p-5 text-center">
-      <MessageSquareText className="mx-auto size-7 text-primary" strokeWidth={1.5} />
-      <h2 className="mt-2 font-semibold">Görüşünüz bizim için değerli</h2>
-      <p className="mt-1 text-sm text-muted-foreground">Öneri, teşekkür ya da şikâyet… Yorumunuz yalnızca işletmeye iletilir.</p>
-      <button type="button" onClick={() => { setSent(false); setOpen(true); }} className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground">
+    <section className="mt-4">
+      <Button type="button" onClick={() => { setSent(false); setOpen(true); }} className="h-11 w-full">
         <MessageSquareText className="size-4" />Yorum yaz
-      </button>
+      </Button>
     </section>
 
     <DialogPrimitive.Root open={open} onOpenChange={(o) => { if (!busy) setOpen(o); }}>
@@ -45,15 +43,14 @@ export function CommentBox() {
             <CheckCircle2 className="mx-auto size-12 text-success" strokeWidth={1.5} />
             <DialogPrimitive.Title className="mt-3 text-lg font-semibold">Teşekkürler!</DialogPrimitive.Title>
             <p className="mt-1 text-sm text-muted-foreground">Yorumunuz işletmeye iletildi.</p>
-            <DialogPrimitive.Close className="mt-5 rounded-full bg-secondary px-5 py-2 text-sm font-medium">Kapat</DialogPrimitive.Close>
+            <DialogPrimitive.Close asChild><Button variant="secondary" className="mt-5">Kapat</Button></DialogPrimitive.Close>
           </div> : <form onSubmit={submit} className="space-y-3">
             <DialogPrimitive.Title className="pr-10 text-lg font-semibold">Yorum yaz</DialogPrimitive.Title>
             <p className="-mt-1 text-xs text-muted-foreground">Yorumunuzu yalnızca işletme görür.</p>
-            <input name="author_name" maxLength={60} placeholder="Adınız (isteğe bağlı)" className={field} />
-            <textarea name="message" required maxLength={1000} rows={5} placeholder="Yorumunuzu yazın..." className={`${field} resize-none`} />
-            <button type="submit" disabled={busy} className="flex w-full items-center justify-center gap-2 rounded-full bg-primary py-3 text-sm font-medium text-primary-foreground disabled:opacity-60">
+            <textarea name="message" aria-label="Yorumunuz" required maxLength={1000} rows={5} placeholder="Yorumunuzu yazın..." className={`${field} resize-none`} />
+            <Button type="submit" disabled={busy} className="h-11 w-full">
               <Send className="size-4" />{busy ? "Gönderiliyor..." : "Gönder"}
-            </button>
+            </Button>
           </form>}
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>

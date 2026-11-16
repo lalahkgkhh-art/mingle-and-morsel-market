@@ -15,5 +15,7 @@ describe("New product photo", () => {
 });
 describe("Guest comments", () => {
   it("requires a written comment", () => { expect(commentSchema.safeParse({ author_name: "", message: "   " }).success).toBe(false); });
-  it("allows sending without a name", () => { expect(commentSchema.safeParse({ author_name: "", message: "Teşekkürler" }).success).toBe(true); });
+  it("allows sending without a name", () => {
+    expect(commentSchema.parse({ author_name: "", message: "Teşekkürler" })).toEqual({ author_name: "", message: "Teşekkürler" });
+  });
 });

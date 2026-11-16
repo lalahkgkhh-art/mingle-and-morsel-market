@@ -15,3 +15,4 @@ Yayınlama istendi. QR kodu yayın için belirlenen misafir menüsü adresini ku
 - [x] Logonun solunda "Şans Çarkı" düğmesi, dokununca çark açılır
 - [x] Çark ayarları Yönetim panelinde (Çark sekmesi); misafir çarkında ayar düğmesi yok
 - [x] Menüde çark düğmesi solda küçük, sade bir simge
+- [x] Yorum yaz düğmesi menünün üstünde görünür; yorum formunda isim alanı yok

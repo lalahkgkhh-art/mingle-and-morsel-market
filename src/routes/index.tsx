@@ -66,6 +66,8 @@ function Menu() {
         <Link to="/dashboard" className="absolute right-4 top-4 rounded-full bg-background/70 px-3 py-1.5 text-xs font-medium text-foreground">Yönetim</Link>
       </header>
 
+      <CommentBox />
+
       <nav className="no-scrollbar -mx-4 mt-5 flex gap-2 overflow-x-auto px-4">
         {CATEGORIES.map((c) => (
           <button key={c.id} onClick={() => { setCategory(c.id); setQuery(""); }}
@@ -126,7 +128,6 @@ function Menu() {
           })}
         </div>
       )}
-      <CommentBox />
       <DialogPrimitive.Root open={wheel} onOpenChange={setWheel}>
         <DialogPrimitive.Portal>
           <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-overlay backdrop-blur-sm" />
