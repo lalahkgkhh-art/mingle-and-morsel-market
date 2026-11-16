@@ -59,7 +59,7 @@ function Menu() {
   return (
     <main className="mx-auto min-h-screen w-full max-w-lg px-4 pb-10">
       <header className="relative -mx-4 flex h-44 items-center justify-center rounded-b-3xl bg-cream">
-        <button type="button" onClick={() => setWheel(true)} aria-label="Şans Çarkı" title="Şans Çarkı" className="absolute left-4 top-1/2 flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-cream-foreground/10 text-lg opacity-70 transition-opacity hover:opacity-100">🎡</button>
+        <button type="button" onClick={() => setWheel(true)} aria-label="Şans Çarkı" title="Şans Çarkı" className="absolute left-4 top-4 flex size-9 items-center justify-center rounded-full bg-cream-foreground/10 text-lg opacity-70 transition-opacity hover:opacity-100">🎡</button>
         <div className="flex h-16 w-16 items-center justify-center rounded-full border border-cream-foreground/50 text-cream-foreground">
           <Coffee className="h-8 w-8" strokeWidth={1.25} />
         </div>
