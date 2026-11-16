@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery, useSuspenseQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
-import { Coffee, LayoutGrid, UtensilsCrossed, QrCode, Plus, Pencil, Trash2, Download, Copy, Search, Eye, EyeOff, Check, ImageOff, MessageSquareText, MailOpen, Mail } from "lucide-react";
+import { Coffee, LayoutGrid, UtensilsCrossed, QrCode, Plus, Pencil, Trash2, Download, Copy, Search, Eye, EyeOff, Check, ImageOff, MessageSquareText, MailOpen, Mail, FerrisWheel } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -14,6 +14,7 @@ import { saveItem, saveCategory, deleteEntry, setItemAvailability, markComment, 
 import { itemSchema } from "@/lib/menu-schema";
 import { menuImage } from "@/lib/menu-images";
 import { PhotoUploader } from "@/components/menu/PhotoUploader";
+import { WheelPanel } from "@/components/menu/WheelPanel";
 import { publishedMenuUrl, resolvedGuestMenuUrl } from "@/lib/menu-url";
 
 export const Route = createFileRoute("/dashboard")({
@@ -27,7 +28,7 @@ export const Route = createFileRoute("/dashboard")({
 
 type Item = Tables<"menu_items">;
 type Category = Tables<"menu_categories">;
-type Tab = "items" | "categories" | "comments" | "qr";
+type Tab = "items" | "categories" | "comments" | "wheel" | "qr";
 const field = "w-full rounded-xl border border-border bg-input px-3.5 py-3 text-base outline-none transition focus:border-primary focus:ring-1 focus:ring-ring sm:text-sm";
 
 function Field({ label, hint, children }: { label: string; hint?: string; children: ReactNode }) {
@@ -101,6 +102,7 @@ function Dashboard() {
     { id: "items", label: "Ürünler", icon: UtensilsCrossed, count: data.items.length },
     { id: "categories", label: "Kategoriler", icon: LayoutGrid, count: data.categories.length },
     { id: "comments", label: "Yorumlar", icon: MessageSquareText, count: comments.data?.filter((c) => !c.is_read).length || undefined },
+    { id: "wheel", label: "Çark", icon: FerrisWheel },
     { id: "qr", label: "QR kod", icon: QrCode },
   ];
   const newItem = () => setEditing({ available: true, image: "", category_id: filter || data.categories[0]?.id || "", position: data.items.length + 1 });
@@ -114,7 +116,7 @@ function Dashboard() {
         </div>
         <Button variant="outline" size="sm" asChild><Link to="/"><Eye />Menüyü gör</Link></Button>
       </div>
-      <nav className="mx-auto grid max-w-5xl grid-cols-4 gap-1 px-4 pb-3" aria-label="Panel bölümleri">
+      <nav className="mx-auto grid max-w-5xl grid-cols-5 gap-1 px-4 pb-3" aria-label="Panel bölümleri">
         {tabs.map((t) => <button key={t.id} type="button" onClick={() => setTab(t.id)} aria-current={tab === t.id ? "page" : undefined}
           className={`relative flex min-w-0 flex-col items-center justify-center gap-1 rounded-xl px-1 py-2 text-xs sm:flex-row sm:gap-2 sm:px-3 sm:py-2.5 sm:text-sm font-medium transition-colors ${tab === t.id ? "bg-primary text-primary-foreground" : "bg-card text-muted-foreground hover:text-foreground"}`}>
           <t.icon className="size-4 shrink-0" /><span className="whitespace-nowrap">{t.label}</span>
@@ -199,6 +201,8 @@ function Dashboard() {
           {comments.data && !comments.data.length && <p className="rounded-2xl border border-dashed border-border p-10 text-center text-sm text-muted-foreground">Henüz yorum yok.</p>}
         </div>
       </>}
+
+      {tab === "wheel" && <WheelPanel />}
 
       {tab === "qr" && <>
         <h1 className="text-2xl font-semibold">QR kod</h1>

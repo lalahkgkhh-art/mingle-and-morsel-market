@@ -29,6 +29,13 @@
       "when": 1794814857165,
       "tag": "0003_create_guest_comments",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1794815113498,
+      "tag": "0004_create_lucky_wheel",
+      "breakpoints": true
     }
   ]
 }

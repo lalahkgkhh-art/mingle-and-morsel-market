@@ -138,12 +138,57 @@ export type Database = {
           },
         ]
       }
+      wheel_settings: {
+        Row: {
+          id: number
+          max_spins: number
+          prizes: Json
+          subtitle: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          id?: number
+          max_spins?: number
+          prizes?: Json
+          subtitle?: string
+          title?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: number
+          max_spins?: number
+          prizes?: Json
+          subtitle?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      wheel_wins: {
+        Row: {
+          count: number
+          day: string
+          prize: string
+        }
+        Insert: {
+          count?: number
+          day: string
+          prize: string
+        }
+        Update: {
+          count?: number
+          day?: string
+          prize?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      spin_wheel: { Args: never; Returns: number }
     }
     Enums: {
       [_ in never]: never

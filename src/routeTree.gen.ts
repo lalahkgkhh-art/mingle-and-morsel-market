@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as ApiPublicWheelConfigRouteImport } from './routes/api/public/wheel-config'
+import { Route as ApiPublicWheelSpinRouteImport } from './routes/api/public/wheel-spin'
 import { Route as ApiPublicMenuPhotoNameRouteImport } from './routes/api/public/menu-photo.$name'
 
 const IndexRoute = IndexRouteImport.update({
@@ -29,6 +31,16 @@ const DashboardRoute = DashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicWheelConfigRoute = ApiPublicWheelConfigRouteImport.update({
+  id: '/api/public/wheel-config',
+  path: '/api/public/wheel-config',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicWheelSpinRoute = ApiPublicWheelSpinRouteImport.update({
+  id: '/api/public/wheel-spin',
+  path: '/api/public/wheel-spin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicMenuPhotoNameRoute = ApiPublicMenuPhotoNameRouteImport.update({
   id: '/api/public/menu-photo/$name',
   path: '/api/public/menu-photo/$name',
@@ -39,12 +51,16 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRoute
+  '/api/public/wheel-config': typeof ApiPublicWheelConfigRoute
+  '/api/public/wheel-spin': typeof ApiPublicWheelSpinRoute
   '/api/public/menu-photo/$name': typeof ApiPublicMenuPhotoNameRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRoute
+  '/api/public/wheel-config': typeof ApiPublicWheelConfigRoute
+  '/api/public/wheel-spin': typeof ApiPublicWheelSpinRoute
   '/api/public/menu-photo/$name': typeof ApiPublicMenuPhotoNameRoute
 }
 export interface FileRoutesById {
@@ -52,20 +68,43 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRoute
+  '/api/public/wheel-config': typeof ApiPublicWheelConfigRoute
+  '/api/public/wheel-spin': typeof ApiPublicWheelSpinRoute
   '/api/public/menu-photo/$name': typeof ApiPublicMenuPhotoNameRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/dashboard' | '/api/public/menu-photo/$name'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/api/public/wheel-config'
+    | '/api/public/wheel-spin'
+    | '/api/public/menu-photo/$name'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/dashboard' | '/api/public/menu-photo/$name'
-  id: '__root__' | '/' | '/auth' | '/dashboard' | '/api/public/menu-photo/$name'
+  to:
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/api/public/wheel-config'
+    | '/api/public/wheel-spin'
+    | '/api/public/menu-photo/$name'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/api/public/wheel-config'
+    | '/api/public/wheel-spin'
+    | '/api/public/menu-photo/$name'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
   DashboardRoute: typeof DashboardRoute
+  ApiPublicWheelConfigRoute: typeof ApiPublicWheelConfigRoute
+  ApiPublicWheelSpinRoute: typeof ApiPublicWheelSpinRoute
   ApiPublicMenuPhotoNameRoute: typeof ApiPublicMenuPhotoNameRoute
 }
 
@@ -92,6 +131,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/wheel-config': {
+      id: '/api/public/wheel-config'
+      path: '/api/public/wheel-config'
+      fullPath: '/api/public/wheel-config'
+      preLoaderRoute: typeof ApiPublicWheelConfigRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/wheel-spin': {
+      id: '/api/public/wheel-spin'
+      path: '/api/public/wheel-spin'
+      fullPath: '/api/public/wheel-spin'
+      preLoaderRoute: typeof ApiPublicWheelSpinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/menu-photo/$name': {
       id: '/api/public/menu-photo/$name'
       path: '/api/public/menu-photo/$name'
@@ -106,6 +159,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
   DashboardRoute: DashboardRoute,
+  ApiPublicWheelConfigRoute: ApiPublicWheelConfigRoute,
+  ApiPublicWheelSpinRoute: ApiPublicWheelSpinRoute,
   ApiPublicMenuPhotoNameRoute: ApiPublicMenuPhotoNameRoute,
 }
 export const routeTree = rootRouteImport

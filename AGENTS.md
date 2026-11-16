@@ -36,3 +36,4 @@ use the editor.
 - Project was imported from GitHub (mingle-at-the-table); the menu data lives in Lovable Cloud tables menu_categories and menu_items.
 - Uploaded product photos go to the private menu-photos storage bucket and are served through /api/public/menu-photo/$name; the workspace blocks public buckets, and this keeps menu data small.
 - Guest comments live in guest_comments and are listed only in the management panel; the guest menu server function never returns them (menu_reviews is deprecated).
+- Lucky wheel settings live in wheel_settings and are edited only in the /dashboard Çark tab; public/cark.html has no admin UI and reads /api/public/wheel-config, while /api/public/wheel-spin calls spin_wheel() so prizes and daily limits are decided server-side for every guest.
